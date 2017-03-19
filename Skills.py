@@ -28,4 +28,7 @@ def make_a_clear_folder(train_dir):
     tf.gfile.DeleteRecursively(train_dir)
   tf.gfile.MakeDirs(train_dir)
 
-###
+### Use tensorboard
+tensorboard --logdir=/path to log
+http://localhost:6006/
+
