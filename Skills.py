@@ -29,6 +29,12 @@ def make_a_clear_folder(train_dir):
   tf.gfile.MakeDirs(train_dir)
 
 ### Use tensorboard
-tensorboard --logdir=/path to log
-http://localhost:6006/
+def tensorboard_details():
+  tensorboard --logdir=/path to log
+  http://localhost:6006/
+  图的意思：https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tensorboard/README.md
+
+### Tensorflow Saver
+def tensorflow_saver():
+  https://www.tensorflow.org/versions/r0.11/api_docs/python/state_ops/saving_and_restoring_variables
 
