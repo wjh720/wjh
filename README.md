@@ -11,3 +11,4 @@ March 23rd: Add some tricks into cifar10 model and read "Introduction to Digital
 March 24th: Download dcase2016 data.
 March 25th: Run dcase2016 baseline and connect to Server by client and vpn.
 March 26th: Work on creating myself Tensorflow Template. (To Do : Evaluate, Input, Network)
+March 27th ~ 29th: Nothing.
