@@ -12,3 +12,6 @@ March 24th: Download dcase2016 data.
 March 25th: Run dcase2016 baseline and connect to Server by client and vpn.
 March 26th: Work on creating myself Tensorflow Template. (To Do : Evaluate, Input, Network)
 March 27th ~ 29th: Nothing.
+March 30th: Nothing.
+Match 31st ~ April 3nd: Holidays.
+April 4th: Nothing.

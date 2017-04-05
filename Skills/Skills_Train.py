@@ -15,6 +15,7 @@ FLAGS.max_checkpoints
 ### Train formula
 def train(logdir = FLAGS.train_dir, restore_from = FLAGS.restore_from):
 	with tf.Graph().as_default():
+		# Get data, Run the model, Get the loss, Specify the optimizer.
 		images, labels = Skills_Input.cifar10_inputs()
 		logits = Skills_Network.cifar10_network(images)
 		loss = Skills_Loss.cifar10_loss(logits, labels)

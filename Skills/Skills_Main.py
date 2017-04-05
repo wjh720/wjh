@@ -7,6 +7,9 @@ import Skills_Evaluate
 FLAGS.data_dir
 FLAGS.train_dir
 FLAGS.restore_from
+FLAGS.optimizer
+FLAGS.learning_rate
+FLAGS.momentum
 
 DATA_URL = 'http://www.cs.toronto.edu/~kriz/cifar-10-binary.tar.gz'
 
@@ -69,8 +72,8 @@ def optimizer(loss):
 						'sgd': create_sgd_optimizer, 
 						'rmsprop': create_rmsprop_optimizer}
 
-	optimizer = optimizer_factory[args.optimizer](
-		learning_rate=args.learning_rate, momentum=args.momentum)
+	optimizer = optimizer_factory[FLAGS.optimizer](
+		learning_rate=FLAGS.learning_rate, momentum=FLAGS.momentum)
 	trainable = tf.trainable_variables()
 	optim = optimizer.minimize(loss, var_list=trainable)
 
