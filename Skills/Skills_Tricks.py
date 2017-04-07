@@ -76,3 +76,41 @@ def some_tricks_2():
 	request_stop(<exception>): 请求该线程停止。
 	join(<list of threads>):等待被指定的线程终止。
 	'''
+
+### Some tricks for other packages.
+def some_tricks_3():
+	# Audio info
+    sample_rate = audio_file.getframerate()
+    sample_width = audio_file.getsampwidth()
+    number_of_channels = audio_file.getnchannels()
+    number_of_frames = audio_file.getnframes()
+    '''
+    	Returns sampling frequency.
+		Returns sample width in bytes.
+		Returns number of audio channels (1 for mono, 2 for stereo).
+		Returns number of audio frames.
+	'''
+
+	# Read raw bytes
+    data = audio_file.readframes(number_of_frames)
+    audio_file.close()
+
+    # __init__.py
+	这个文件能让一个文件夹变成一个package，而且里面from import东西的话，代码可以直接import。
+
+	# Stack arrays in sequence vertically (row wise).
+	numpy.vstack(tup)
+	'''
+	tup : sequence of ndarrays.
+	Tuple containing arrays to be stacked. The arrays must have the same shape along all but the first axis.
+
+	>>> a = np.array([1, 2, 3])
+	>>> b = np.array([2, 3, 4])
+	>>> np.vstack((a,b))
+	array([[1, 2, 3],
+	       [2, 3, 4]])
+	
+	'''
+
+
+

@@ -15,3 +15,5 @@ March 27th ~ 29th: Nothing.
 March 30th: Nothing.
 Match 31st ~ April 3nd: Holidays.
 April 4th: Nothing.
+April 5th: Finish the Tensorflow Template.
+April 6th: Have read the dcase2016 baseline's code and start to implement my idea on the top of baseline.

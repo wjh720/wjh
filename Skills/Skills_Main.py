@@ -13,6 +13,12 @@ FLAGS.momentum
 
 DATA_URL = 'http://www.cs.toronto.edu/~kriz/cifar-10-binary.tar.gz'
 
+### build flags
+def build_flags():
+	FLAGS = tf.app.flags.FLAGS
+	tf.app.flags.DEFINE_integer('max_steps', 10000,
+								"""Number of batches to run.""")
+
 ### CIFAR-10 maybe_download_and_extract
 def maybe_download_and_extract(dest_directory = FLAGS.data_dir):
 	"""Download and extract the tarball from Alex's website."""
@@ -147,6 +153,7 @@ def Import():
 	import tarfile
 	import json
 	import os.path
+	import wave
 
 	import time
 	import sys

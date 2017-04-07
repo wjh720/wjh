@@ -53,25 +53,32 @@ def train(logdir = FLAGS.train_dir, restore_from = FLAGS.restore_from):
 		coord = tf.train.Coordinator()
 		threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 
-		### Loop
-		for step in xrange(FLAGS.max_steps):
-			start_time = time.time()
-			if step % 50 == 0:
-				run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
-				summary, loss_value, _ = sess.run([summaries, loss, optim], options=run_options, 
-													run_metadata=run_metadata)
-				writer.add_summary(summary, step)
-				writer.add_run_metadata(run_metadata, 'step_{:04d}'.format(step))
-			else:
-				summary, loss_value, _ = sess.run([summaries, loss, optim])
-				writer.add_summary(summary, step)
+		try:
+			### Loop
+			for step in xrange(FLAGS.max_steps):
+				start_time = time.time()
+				if step % 50 == 0:
+					run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
+					summary, loss_value, _ = sess.run([summaries, loss, optim], options=run_options, 
+														run_metadata=run_metadata)
+					writer.add_summary(summary, step)
+					writer.add_run_metadata(run_metadata, 'step_{:04d}'.format(step))
+				else:
+					summary, loss_value, _ = sess.run([summaries, loss, optim])
+					writer.add_summary(summary, step)
 
-			duration = time.time() - start_time
-			print('step {:d} - loss = {:.3f}, ({:.3f} sec/step)'.format(step, loss_value, duration))
+				duration = time.time() - start_time
+				print('step {:d} - loss = {:.3f}, ({:.3f} sec/step)'.format(step, loss_value, duration))
 
-			if step % FLAGS.checkpoint_every == 0:
-				save(saver, sess, logdir, step)
+				if step % FLAGS.checkpoint_every == 0:
+					save(saver, sess, logdir, step)
 
-		#Close
-		coord.request_stop()
-		coord.join(threads)
+		except KeyboardInterrupt:
+			# Introduce a line break after ^C is displayed so save message
+			# is on its own line.
+			print()
+			
+		finally:
+			#Close
+			coord.request_stop()
+			coord.join(threads)
